@@ -2,7 +2,7 @@ var robot = require("robotjs");
 
 let cnt = 0
 
-while (cnt < 10000) {
+while (1) {
   cnt++
   robot.mouseClick()
 }
