@@ -6,31 +6,19 @@ const wdio = require("webdriverio");
 
 // 옵션 설정
 const opts = {
-  hostname: '172.20.10.6',
+  // hostname: '172.20.10.6',
   path: '/wd/hub',
   port: 4723,
   capabilities: {
     platformName: "Android",
     deviceName: "myphone",
     automationName: "UiAutomator2",
-    appActivity: "com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity",
+    appActivity: ".app.honeycomb.Shell$HomeActivity",
     appPackage: "com.google.android.youtube",
     udid: 'R3CM80YMLGT', //변경
+    noReset: true
   }
 };
-
-// const capabilities = {
-//   platformName: 'Android',
-//   'appium:app': 'storage:filename=main-skeleton-universal-release.apk', // The filename of the mobile app
-//   'appium:deviceName': 'Android GoogleAPI Emulator',
-//   'appium:deviceOrientation': 'portrait',
-//   'appium:automationName': 'UiAutomator2',
-//   'sauce:options': {
-//     build: 'appium-build-4ZA5I',
-//     name: '<your test name>',
-//   },
-// };
-
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
@@ -43,13 +31,39 @@ async function main() {
   //com.android.vending 앱 실행
   client.launchApp()
 
-
-  //좌표클릭 (x,y)
-
   await sleep(10000)
 
-  client.elementClick("00000000-0000-000f-ffff-ffff00000164")
-  await client.e
+  // 좌표클릭 (x,y)
+  // await client.touchAction([
+  //   { action: 'tap', x: 576, y: 1188 },
+  // ])
+
+  // await sleep(500)
+  // await client.touchAction([
+  //   { action: 'tap', x: 913, y: 618 },
+  // ])
+
+  // await sleep(500)
+
+  // while (1) {
+  //   await client.touchAction([
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //     { action: 'tap', x: 500, y: 700 },
+  //   ])
+  // }
+
   await client.deleteSession();
 }
 
